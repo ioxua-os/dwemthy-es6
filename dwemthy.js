@@ -12,19 +12,9 @@ class Creature {
     
     traits() {
         Array.from(arguments).forEach(name => {
-            const key = "_" + name;
             Object.defineProperties(this, {
-                [key]: {
-                    enumerable: false,
-                    writable: true
-                },
                 [name]: {
-                    set(val) {
-                        this[key] = val;
-                    },
-                    get() {
-                        return this[key];
-                    },
+                    writable: true
                 }
             });
         });
