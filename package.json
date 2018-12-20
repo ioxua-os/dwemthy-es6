@@ -1,0 +1,19 @@
+{
+  "name": "dwemthy-es6",
+  "version": "1.0.0",
+  "description": "## Motivation First of all, this is a challenge I always wanted to tackle: first in Rust (didn't work well but I will try again) and after, in JavaScript.",
+  "main": "dwemthy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ioxua-os/dwemthy-es6.git"
+  },
+  "author": "Yehoshua Oliveira <ioxua.oliveira@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ioxua-os/dwemthy-es6/issues"
+  },
+  "homepage": "https://github.com/ioxua-os/dwemthy-es6#readme"
+}

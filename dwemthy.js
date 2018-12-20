@@ -48,19 +48,19 @@ class Creature {
     /**
     * This method takes one turn in a fight
     */
-    fight(enemy, weapon) {
+    fight(enemy, weapon = this.weapon) {
         if (this.life <= 0) {
             console.log(`[${this.name} is too dead to fight!]`);
             return;
         }
         
         // Attaaaaaaaaack!
-        const hit = rand(this.strength + this.weapon);
+        const hit = rand(this.strength + weapon);
         console.log(`[You hit with ${hit} points of damage!`);
         enemy.hit(hit);
         
         // Retaliation
-        console.log(enemy) // ?
+        //console.log(enemy) // ?
         if (enemy.life > 0) {
             const enemyHit = rand(enemy.strength + enemy.weapon);
             console.log(`[${enemy.name} hit with ${enemyHit} points of damage!`);
@@ -170,29 +170,28 @@ class Dragon extends Creature {
     }
 }
 
-const overwriteToString = (arr) => {
-    const _toString = arr.toString;
-    arr.toString = () => `#<${arr[0] ? arr[0].name : ''}${_toString()}>`;
-    return arr;
-}
-
 const dwemthysArrayOf = function() {
-    const creatures = overwriteToString(Array.from(arguments));
-    return new Proxy(creatures, {
-        get: function(target, prop, proxy) {
+    return new Proxy(Array.from(arguments), {
+        get: function(target, prop, _) {
             if (target.length == 0) {
                 console.log("[Whoa.  You decimated Dwemthy's Array!]");
                 return;
             }
             
-            const enemy = target[0];
+            let enemy = target[0];
             if (enemy.life <= 0) {
                 target.shift();
                 enemy = target[0];
                 console.log(`[Get ready. ${enemy.name} has emerged.]`)
             }
             
-            return enemy[prop];
+            const value = enemy[prop];
+
+            if (typeof value === "function") {
+                return value.bind(enemy)
+            }
+
+            return value;
         }
     });
 };
@@ -207,4 +206,8 @@ const dwarr = dwemthysArrayOf(
         new Dragon());
 
 const aliveRabbit = new Rabbit();
+aliveRabbit.boomerang(dwarr);
+aliveRabbit.boomerang(dwarr);
+aliveRabbit.boomerang(dwarr);
+aliveRabbit.boomerang(dwarr);
 aliveRabbit.boomerang(dwarr);
