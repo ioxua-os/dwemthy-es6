@@ -8,7 +8,7 @@ There is [another implementation](https://sea-region.github.com/bpo/dwemthyjs) i
 ## What now?
 I don't think this implementation is perfect. There are lots of ways to improve it.
 
-In fact I don't want to use classes at all: maybe creatures resulting of a function call would be better:
+~~In fact I don't want to use classes at all: maybe creatures resulting of a function call would be better:~~ **(DONE)**
 
 ```js
 const creatureFactory = (name, traits) => {
@@ -45,7 +45,7 @@ const dwarvenAngel = creatureFactory("DwarvenAngel", {
 });
 ```
 
-Maybe there is no need for backing properties on the creatures and this is enough:
+~~Maybe there is no need for backing properties on the creatures and this is enough:~~**(DONE)**
 
 ```js
 Object.entries(traits).forEach(trait => {
