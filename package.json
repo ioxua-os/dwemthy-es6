@@ -1,7 +1,7 @@
 {
   "name": "dwemthy-es6",
   "version": "1.0.0",
-  "description": "## Motivation First of all, this is a challenge I always wanted to tackle: first in Rust (didn't work well but I will try again) and after, in JavaScript.",
+  "description": "Dwemthy's Array port to ES6",
   "main": "dwemthy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
